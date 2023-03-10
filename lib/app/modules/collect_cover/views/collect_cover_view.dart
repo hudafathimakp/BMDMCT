@@ -2,6 +2,7 @@ import 'package:bmdmct_getx_project/app/app_bar/common_app_bar.dart';
 import 'package:bmdmct_getx_project/app/app_bar/select_calender.dart';
 import 'package:bmdmct_getx_project/app/common_widgets/common_texts.dart';
 import 'package:flutter/material.dart';
+// import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 import 'package:get/get.dart';
 
@@ -99,7 +100,6 @@ class CalenderDate extends StatelessWidget {
     super.key,
   });
 
-  // List list = ['Mon','Tue','Wed'];
   @override
   Widget build(BuildContext context) {
     return Column(
