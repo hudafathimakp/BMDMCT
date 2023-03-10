@@ -16,7 +16,7 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
-  Future<void> customerAuth() async {
+  Future<void> login() async {
     isLoginLoading(true);
 
     try {
