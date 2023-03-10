@@ -20,16 +20,15 @@ class OtpTextfield extends StatelessWidget {
         textStyle:
             TextStyle(color: Get.isDarkMode ? Colors.white : Colors.black),
         pinTheme: PinTheme(
-          shape: PinCodeFieldShape.underline,
-          borderRadius: BorderRadius.circular(10),
-          fieldHeight: 60,
+          shape: PinCodeFieldShape.box,
+          borderRadius: BorderRadius.circular(5),
+          fieldHeight: 50,
           fieldWidth: 70,
-          borderWidth: 2,
+          borderWidth: 0,
           activeColor: const Color(0xFFCACACA),
           selectedColor: const Color(0xFFCACACA),
           activeFillColor: const Color(0xFFCACACA),
           disabledColor: const Color(0xFFCACACA),
-          errorBorderColor: const Color(0xFFCACACA),
           inactiveColor: const Color(0xFFCACACA),
           inactiveFillColor: const Color(0xFFCACACA),
           selectedFillColor: const Color(0xFFCACACA),
@@ -38,7 +37,9 @@ class OtpTextfield extends StatelessWidget {
         keyboardType: TextInputType.number,
         cursorColor: Get.isDarkMode ? Colors.white : Colors.black,
         onCompleted: oncomplete,
-        onChanged: onchange!,
+        onChanged: (value) {
+          onchange;
+        },
         beforeTextPaste: (text) {
           //print("Allowing to paste $text");
           return true;

@@ -13,44 +13,44 @@ class OtpView extends GetView<OtpController> {
   const OtpView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 80,
-            ),
-            Image.asset(
-              'assets/png/bmdmct.png',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: ColorText(),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Image.asset(
-              'assets/png/otpphone.png',
-            ),
-            CommonText('OTP Verification', Colors.black, 18),
-            CommonText('Enter the OTP Send to', Color(0xFFB6B6B6), 18),
-            SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              // child: OtpTextfield(),
-            ),
-            LoginButton(
-                label: 'VERIFY & CONTINUE',
-                onClick: () {
-                  Get.toNamed(Routes.HOME);
-                })
-          ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/png/bmdmct.png',
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              const ColorText(),
+              SizedBox(
+                height: size.height * 0.09,
+              ),
+              Image.asset(
+                'assets/png/otpphone.png',
+              ),
+              CommonText('OTP Verification', Colors.black, 18),
+              CommonText('Enter the OTP Send to', const Color(0xFFB6B6B6), 18),
+              SizedBox(
+                height: size.height * 0.05,
+              ),
+              OtpTextfield(),
+              SizedBox(
+                width: double.infinity,
+                child: LoginButton(
+                    label: 'VERIFY & CONTINUE',
+                    onClick: () {
+                      Get.toNamed(Routes.HOME);
+                    }),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -9,6 +9,7 @@ class LoginTextField extends StatelessWidget {
 
   final Widget? suffixIcon;
   final TextInputType? textInputType;
+  
   final bool obscureText;
   final Function? suffixIconClick;
   final TextEditingController? textEditingController;

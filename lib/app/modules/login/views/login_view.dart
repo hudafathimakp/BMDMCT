@@ -13,44 +13,64 @@ class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 80,
-            ),
-            Image.asset(
-              'assets/png/bmdmct.png',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ColorText(),
-            SizedBox(
-              height: 20,
-            ),
-            Image.asset(
-              'assets/png/loginphone.png',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            CommonText('Enter Your Mobile Number', Colors.black, 18),
-            SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: LoginTextField(),
-            ),
-            LoginButton(
-                label: 'VERIFY & CONTINUE',
-                onClick: () {
-                  Get.toNamed(Routes.OTP);
-                })
-          ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/png/bmdmct.png',
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              const ColorText(),
+              SizedBox(
+                height: size.height * 0.10,
+              ),
+              Image.asset(
+                'assets/png/loginphone.png',
+              ),
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              CommonText('Enter Your Mobile Number', Colors.black, 18),
+              SizedBox(
+                height: size.height * 0.07,
+              ),
+              LoginTextField(
+                textInputType: TextInputType.number,
+                textEditingController: controller.mobileController,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Enter Phone Number';
+                  } else if (value.toString().length != 10) {
+                    return 'Invalid Phone Number';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: size.height * 0.03),
+              SizedBox(
+                width: double.infinity,
+                child: Obx(
+                  () => LoginButton(
+                      label: 'VERIFY & CONTINUE',
+                      isLoading: controller.isLoginLoading.value,
+                      onClick: () {
+                        // if(controller.formKey.currentState!.validate()){
+
+                        // }
+                        Get.toNamed(Routes.OTP);
+                      }),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
