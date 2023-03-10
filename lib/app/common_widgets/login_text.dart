@@ -9,10 +9,10 @@ class ColorText extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       textAlign: TextAlign.center,
-      text: TextSpan(
+      text: const TextSpan(
         text: 'B',
         style: TextStyle(color: Color(0xFFED1C24), fontSize: 18),
-        children: const <TextSpan>[
+        children: <TextSpan>[
           TextSpan(text: 'eypore ', style: TextStyle(color: Color(0xFF0E76BC))),
           TextSpan(
             text: 'M',

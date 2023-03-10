@@ -3,26 +3,34 @@ import 'package:flutter/material.dart';
 class LoginButton extends StatelessWidget {
   final String label;
   final VoidCallback onClick;
-  const LoginButton({super.key, required this.label, required this.onClick});
+  final bool? isLoading;
+  const LoginButton(
+      {super.key,
+      required this.label,
+      required this.onClick,
+      this.isLoading = false});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        onClick();
-      },
+      onPressed: isLoading == true
+          ? null
+          : () {
+              onClick();
+            },
       style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           // side: BorderSide(
           //   width: 1,
           // ),
           // fixedSize: const Size(99, 38),
-          backgroundColor: Color(0xFF2196F3),
-          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 110),
+          backgroundColor: const Color(0xFF2196F3),
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
           textStyle: const TextStyle(fontSize: 14)),
       child: Text(
         label,
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        style:
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
       ),
     );
   }
